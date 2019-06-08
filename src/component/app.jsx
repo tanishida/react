@@ -1,10 +1,28 @@
 import React from 'react'
-import RaisedButton from 'material-ui/RaisedButton';
+import NavBar from './NavBar';
 
-export default class App extends React.Component {
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      open: false
+    }
+  }
+  handleToggle() {
+    this.setState({
+      open: !this.state.open
+    })
+  }
   render() {
     return (
-      <RaisedButton>Default</RaisedButton>
+      <div>
+        <NavBar
+          onToggle={() => this.handleToggle()}
+          open={this.state.open}
+        />
+      </div>
     );
   }
 }
+
+export default App;

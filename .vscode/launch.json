@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Chrome against localhost, with sourcemaps",
+        "type": "chrome",
+        "request": "launch",
+        "sourceMaps": true,
+        "url": "http://localhost:3000/",
+        "webRoot": "${workspaceRoot}",  // ${workspaceRoot}/appではない
+        // Windowsの場合のみ以下設定が必要
+        "sourceMapPathOverrides": {
+          "webpack:///./C:/myproject/*": "${webRoot}/*"  // 動く
+          // "webpack:///./*": "*"  // 動かない
+        }
+      },
+      {
+        "name": "Attach to Chrome, with sourcemaps",
+        "type": "chrome",
+        "request": "attach",
+        "port": 9222,  // Chrome起動時のremote-debugging-portを指定
+        "sourceMaps": true,
+        "url": "http://localhost:3000/",
+        "webRoot": "${workspaceRoot}",    // ${workspaceRoot}/appではない
+        // Windowsの場合のみ以下設定が必要
+        "sourceMapPathOverrides": {
+          "webpack:///./C:/myproject/*": "${webRoot}/*"  // 動く
+          // "webpack:///./*": "*"  // 動かない
+        }
+      }
+    ]
+  }

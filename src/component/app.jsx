@@ -1,10 +1,34 @@
-import React from 'react'
-import RaisedButton from 'material-ui/RaisedButton';
+import * as CounterActions from '../actions/index';
+import React from 'react';
+import NavBar from './NavBar';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
-export default class App extends React.Component {
+// Appコンポーネントにstateを流し込む
+const mapStateToProps = state => {
+    return {
+      reducer: state.reducer,
+    };
+  }
+  // actionをマッピングする
+  const mapDispatchToProps = dispatch => {
+    const actionList = CounterActions.default;
+    return {
+      actions: bindActionCreators(actionList, dispatch)
+    };
+  }
+
+class App extends React.Component {
   render() {
     return (
-      <RaisedButton>Default</RaisedButton>
+        <div>
+            <NavBar {...this.props} />
+        </div>
     );
   }
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App);

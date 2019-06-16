@@ -1,7 +1,14 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './src/component/app';
+import { Provider } from 'react-redux';
+import App from './src/component/App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import configureStore from './src/store/configureStore';
+
+injectTapEventPlugin();
+const store = configureStore();
 // import {createStore} from 'redux';
 // import {Provider} from 'react-redux';
 // import reducer from './src/reducer/reducer';
@@ -18,5 +25,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <App />
+    <Provider store={store}>
+      <div>
+        <App />
+      </div>
+    </Provider>
   </MuiThemeProvider>, document.getElementById("root"))

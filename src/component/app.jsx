@@ -1,28 +1,34 @@
-import React from 'react'
+import * as CounterActions from '../actions/index';
+import React from 'react';
 import NavBar from './NavBar';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+// Appコンポーネントにstateを流し込む
+const mapStateToProps = state => {
+    return {
+      reducer: state.reducer,
+    };
+  }
+  // actionをマッピングする
+  const mapDispatchToProps = dispatch => {
+    const actionList = CounterActions.default;
+    return {
+      actions: bindActionCreators(actionList, dispatch)
+    };
+  }
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      open: false
-    }
-  }
-  handleToggle() {
-    this.setState({
-      open: !this.state.open
-    })
-  }
   render() {
     return (
-      <div>
-        <NavBar
-          onToggle={() => this.handleToggle()}
-          open={this.state.open}
-        />
-      </div>
+        <div>
+            <NavBar {...this.props} />
+        </div>
     );
   }
 }
 
-export default App;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App);

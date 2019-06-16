@@ -1,27 +1,40 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { AppBar, MenuItem, Drawer } from 'material-ui';
+import {AppBar, MenuItem, Drawer} from 'material-ui';
+import Body from './Body';
 
 class NavBar extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      open: false,
+    }
+  }
+  handleToggle() {
+    this.setState({
+      open: !this.state.open
+    })
+  }
+
   render() {
     return (
-      <MuiThemeProvider>
-        <div>
-          <Drawer
-            docked={false}
-            width={200}
-            open={this.props.open}
-            onRequestChange={() => this.props.onToggle()}
-          >
-            <MenuItem>React</MenuItem>
-            <MenuItem>Redux</MenuItem>
-          </Drawer>
-          <AppBar
-            title=""
-            onLeftIconButtonTouchTap={ () => this.props.onToggle()}
-          />
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <Drawer
+          docked={true}
+          open={this.state.open}
+        >
+          <span class="glyphicon glyphicon-remove" 
+                style={{marginTop: 10, marginLeft: 233}} 
+                title={'閉じる'} 
+                aria-hidden="true" 
+                onClick={() => this.handleToggle()}>
+          </span>
+          <MenuItem>React</MenuItem>
+          <MenuItem>Redux</MenuItem>
+        </Drawer>
+        <AppBar title="test" onLeftIconButtonClick={() => this.handleToggle()}>
+        </AppBar>
+        <Body {...this.props} />
+      </div>
     );
   }
 }

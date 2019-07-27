@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppBar, MenuItem, Drawer} from 'material-ui';
-import Body from './Body';
+import InputText from './InputText';
 
 class NavBar extends React.Component {
   constructor() {
@@ -19,21 +19,26 @@ class NavBar extends React.Component {
     return (
       <div>
         <Drawer
-          docked={true}
+          docked={false}
           open={this.state.open}
         >
           <span class="glyphicon glyphicon-remove" 
                 style={{marginTop: 10, marginLeft: 233}} 
                 title={'閉じる'} 
-                aria-hidden="true" 
+                aria-hidden={true} 
                 onClick={() => this.handleToggle()}>
           </span>
           <MenuItem>React</MenuItem>
           <MenuItem>Redux</MenuItem>
         </Drawer>
-        <AppBar title="test" onLeftIconButtonClick={() => this.handleToggle()}>
+        <AppBar 
+          title="Component demonstration" 
+          onLeftIconButtonClick={() => this.handleToggle()}
+          style={{position: 'fixed', top: 0, backgroundColor: 'rgb(23, 0, 212)'}}>
         </AppBar>
-        <Body {...this.props} />
+        <div style={{marginTop: 70}}>
+          <InputText {...this.props} />
+        </div>
       </div>
     );
   }

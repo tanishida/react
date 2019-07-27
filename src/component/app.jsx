@@ -1,4 +1,5 @@
 import * as CounterActions from '../actions/index';
+import Body from './Body';
 import React from 'react';
 import NavBar from './NavBar';
 import {bindActionCreators} from 'redux';
@@ -8,6 +9,7 @@ import {connect} from 'react-redux';
 const mapStateToProps = state => {
     return {
       reducer: state.reducer,
+      modalReducer: state.modalReducer
     };
   }
   // actionをマッピングする
@@ -21,8 +23,9 @@ const mapStateToProps = state => {
 class App extends React.Component {
   render() {
     return (
-        <div>
+        <div style={{overflowX: 'hidden'}}>
             <NavBar {...this.props} />
+            <Body {...this.props} />
         </div>
     );
   }

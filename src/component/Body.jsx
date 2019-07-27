@@ -1,5 +1,6 @@
 import React from 'react';
-import {Row, Col, Panel, Carousel, Button} from 'react-bootstrap';
+import {Row, Col, Panel, Button} from 'react-bootstrap';
+import {Dialog, RaisedButton} from 'material-ui';
 
 class Body extends React.Component {
   constructor() {
@@ -15,40 +16,30 @@ class Body extends React.Component {
         <Row style={this.styles}>
           <Col xs={2}></Col>
           <Col xs={8}>
-            <Carousel>
-              <Carousel.Item style={{marginTop: 300}}>
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item style={{marginTop: 300}}>
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item style={{marginTop: 300}}>
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
+              <Panel>
+                <Panel.Heading>sampleかうんたー</Panel.Heading>
+                <Panel.Body>
+                  <h2>{this.props.reducer.value}</h2>
+                  <Button onClick={this.props.actions.increment}>増加</Button>
+                  <Button onClick={this.props.actions.decrement}>減少</Button>
+                </Panel.Body>
+              </Panel>
           </Col>
           <Col xs={2}></Col>
         </Row>
         <Row style={this.styles}>
           <Col xs={2}></Col>
           <Col xs={8}>
-              <Panel>
-                <Panel.Heading>Panel heading without a title</Panel.Heading>
-                <Panel.Body>
-                  <h2>count={this.props.reducer.value}</h2>
-                  <Button onClick={this.props.actions.increment}>増加</Button>
-                  <Button onClick={this.props.actions.decrement}>減少</Button>
-                </Panel.Body>
-              </Panel>
+            <Panel>
+              <Panel.Heading>sampleだいあろぐ</Panel.Heading>
+              <Panel.Body>
+                <h4>material UI</h4>
+                <RaisedButton label={'開く'} onClick={() => this.props.actions.dialogAction()} />
+              </Panel.Body>
+            </Panel>
+            <Dialog open={this.props.modalReducer.dialogOpen} onClose={() => this.props.actions.dialogAction()}>
+              <RaisedButton label={'閉じる'} onClick={() => this.props.actions.dialogAction()} />
+            </Dialog>
           </Col>
           <Col xs={2}></Col>
         </Row>

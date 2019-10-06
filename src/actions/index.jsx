@@ -18,10 +18,40 @@ function dialogAction() {
   };
 }
 
+function setAction(val) {
+  return {
+    type: types.TEXT_SET,
+    val
+  };
+}
+
+function addAction(text) {
+  return {
+    type: types.TEXT_ADD,
+    text
+  };
+}
+
+function deleteAction() {
+  return {
+    type: types.TEXT_DELETE
+  };
+}
+
+function formDeleteAction() {
+  return {
+    type: types.FORM_DELETE
+  };
+}
+
 const CounterActions = {
   increment,
   decrement,
-  dialogAction
+  dialogAction,
+  setAction,
+  addAction,
+  deleteAction,
+  formDeleteAction
 };
 
 export default CounterActions;

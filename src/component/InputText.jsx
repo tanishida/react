@@ -1,21 +1,37 @@
 import React from 'react';
+import RenderList from './RenderList';
 import {Row, Col, Panel} from 'react-bootstrap';
-import {TextField} from 'material-ui';
+import {TextField, RaisedButton} from 'material-ui';
 
 class InputText extends React.Component {
   constructor() {
     super()
     this.styles = {
-      marginBottom: 10
+      marginLeft: 5
     }
   }
-  onChengeText(e) {
-    const value = e.target.value;
+  onChangeText(e) {
     this.setState({
-      text: value
+      text: e.target.value
     })
+    this.props.actions.setAction(e.target.value);
   }
-
+  onAddText() {
+    const formValue = this.props.inputTextReducer.text;
+    if (formValue !== '' && formValue !== undefined) {
+      this.props.actions.addAction(formValue);
+      this.props.actions.formDeleteAction();
+    }
+  }
+  onDeleteAction() {
+    this.props.actions.deleteAction();
+  }
+  onEnter(e) {
+    const ENTER = 13;
+    if (e.keyCode === ENTER) {
+      this.onAddText();
+    }
+}
   render() {
     return (
       <div>
@@ -26,11 +42,19 @@ class InputText extends React.Component {
               <Panel.Heading>sampleテキストエリア</Panel.Heading>
               <Panel.Body>
                 <TextField
-                label="Name"
-                value={this.props.reducer.text}
-                onChenge={e => this.onChengeText(e)}
-                margin="normal"
-              />
+                  label="name"
+                  value={this.props.inputTextReducer.text}
+                  onChange={e => this.onChangeText(e)}
+                  hintText="入力"
+                  floatingLabelText="リストを追加"
+                  fullWidth={true}
+                  onKeyDown={e => this.onEnter(e)}
+                />
+              <RenderList {...this.props} />
+              <div style={this.styles}>
+                <RaisedButton secondary={true} label={'追加'} onClick={() => this.onAddText()} />
+                <RaisedButton label={'くりあ'} onClick={() => this.onDeleteAction()} />
+              </div>
               </Panel.Body>
             </Panel>
           </Col>

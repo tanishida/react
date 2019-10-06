@@ -38,6 +38,7 @@ class Body extends React.Component {
               </Panel.Body>
             </Panel>
             <Dialog open={this.props.modalReducer.dialogOpen} onClose={() => this.props.actions.dialogAction()}>
+              開いたね！<br />
               <RaisedButton label={'閉じる'} onClick={() => this.props.actions.dialogAction()} />
             </Dialog>
           </Col>

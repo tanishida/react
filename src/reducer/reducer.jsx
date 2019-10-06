@@ -1,8 +1,7 @@
 import * as types from '../actionTypes/index';
 
 const initialState = {
-  value: 0,
-  text: ''
+  value: 0
 };
 
 export default function reducer(state = initialState, action) {

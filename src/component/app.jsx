@@ -9,7 +9,8 @@ import {connect} from 'react-redux';
 const mapStateToProps = state => {
     return {
       reducer: state.reducer,
-      modalReducer: state.modalReducer
+      modalReducer: state.modalReducer,
+      inputTextReducer: state.inputTextReducer
     };
   }
   // actionをマッピングする

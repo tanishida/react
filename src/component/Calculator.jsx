@@ -27,10 +27,6 @@ class Calculator extends React.Component {
     const claculResult = this.props.calculatorLogicReducer.claculResult
     // 計算式の末尾の数値判定　T:数値以外 F:数値
     const isNumnerCalculFormulaEnd = isNaN(this.props.calculatorLogicReducer.calculFormula.slice(-1));
-    // 計算式の末尾を取得
-    const calculFormulaEnd = this.props.calculatorLogicReducer.calculFormula.slice(-1);
-    // 計算式の末尾以外を取得
-    const calculFormulaNumber = Number(this.props.calculatorLogicReducer.calculFormula.slice(0, -1));
     // 前回の計算結果が残っていた場合は消去
     if (claculResult !== '') {
       this.props.actions.deleteNumberAction();

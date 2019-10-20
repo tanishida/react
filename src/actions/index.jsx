@@ -57,13 +57,6 @@ function calculLogicAcrion() {
   };
 }
 
-function addNumberAction(addNumber) {
-  return {
-    type: types.ADD_NUMBER,
-    addNumber
-  };
-}
-
 function deleteNumberAction() {
   return {
     type: types.DELETE_NUMBER
@@ -92,7 +85,6 @@ const CounterActions = {
   formDeleteAction,
   inputNumberAction,
   calculLogicAcrion,
-  addNumberAction,
   deleteNumberAction,
   inputTextToggleAction,
   calculatorToggleAction

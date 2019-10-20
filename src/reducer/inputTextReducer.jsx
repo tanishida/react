@@ -2,7 +2,7 @@ import * as types from '../actionTypes/index';
 
 const initialState = {
   text: '',
-  list: []
+  list: ['TODOリスト']
 };
 
 export default function inputTextReducer(state = initialState, action) {
@@ -20,7 +20,7 @@ export default function inputTextReducer(state = initialState, action) {
     case types.TEXT_DELETE:
         return {
           text: '',
-          list: []
+          list: initialState.list
         };
     case types.FORM_DELETE:
     return {

@@ -44,6 +44,44 @@ function formDeleteAction() {
   };
 }
 
+function inputNumberAction(inputValue) {
+  return {
+    type: types.INPUT_NUMBER,
+    inputValue
+  };
+}
+
+function calculLogicAcrion() {
+  return {
+    type: types.CALCUL_LOGIC
+  };
+}
+
+function addNumberAction(addNumber) {
+  return {
+    type: types.ADD_NUMBER,
+    addNumber
+  };
+}
+
+function deleteNumberAction() {
+  return {
+    type: types.DELETE_NUMBER
+  };
+}
+
+function inputTextToggleAction() {
+  return {
+    type: types.INPUT_TEXT_TOGGLE
+  };
+}
+
+function calculatorToggleAction() {
+  return {
+    type: types.CALUCLOTOR_TOGGLE
+  };
+}
+
 const CounterActions = {
   increment,
   decrement,
@@ -51,7 +89,14 @@ const CounterActions = {
   setAction,
   addAction,
   deleteAction,
-  formDeleteAction
+  formDeleteAction,
+  inputNumberAction,
+  calculLogicAcrion,
+  addNumberAction,
+  deleteNumberAction,
+  inputTextToggleAction,
+  calculatorToggleAction
+
 };
 
 export default CounterActions;

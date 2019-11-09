@@ -16,7 +16,7 @@ class Calculator extends React.Component {
         '7','8','9','+'
       ],
       buttonModule4: [
-        '0','=','-'
+        '0', '00','-'
       ]
     }
   }
@@ -27,10 +27,6 @@ class Calculator extends React.Component {
     const claculResult = this.props.calculatorLogicReducer.claculResult
     // 計算式の末尾の数値判定　T:数値以外 F:数値
     const isNumnerCalculFormulaEnd = isNaN(this.props.calculatorLogicReducer.calculFormula.slice(-1));
-    // 前回の計算結果が残っていた場合は消去
-    if (claculResult !== '') {
-      this.props.actions.deleteNumberAction();
-    }
     if ((isNotNumber && isNumnerCalculFormulaEnd) ||
         (this.props.calculatorLogicReducer.calculFormula === '' && isNotNumber)) {
       // 計算記号の連続入力と初回記号入力は認めない
@@ -38,9 +34,9 @@ class Calculator extends React.Component {
     }
     // 画面描画用計算式を作成
     this.props.actions.inputNumberAction(inputNumber);
-    // =が入力されたら計算
-    if (inputNumber === '=') {
-      this.props.actions.calculLogicAcrion();
+    if (isNotNumber) {
+      // 計算
+      this.props.actions.calculLogicAcrion(claculResult, inputNumber);
     }
   }
   onDeleteNumber() {

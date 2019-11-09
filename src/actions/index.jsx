@@ -51,9 +51,11 @@ function inputNumberAction(inputValue) {
   };
 }
 
-function calculLogicAcrion() {
+function calculLogicAcrion(prevClaculResult, inputNumber) {
   return {
-    type: types.CALCUL_LOGIC
+    type: types.CALCUL_LOGIC,
+    prevClaculResult,
+    inputNumber
   };
 }
 

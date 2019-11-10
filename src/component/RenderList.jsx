@@ -4,20 +4,18 @@ class RenderList extends React.Component {
   constructor() {
     super()
     this.styles = {
-      marginLeft: 0
+      marginTop: 10
     }
   }
   render() {
     const items = this.props.inputTextReducer.list;
     return (
-      <div>
-        <ul>
-            {
-              items.map(item => {
-                return <li>{item}</li>
-              })
-            }
-        </ul>
+      <div style={this.styles}>
+        {
+          items.map(item => {
+            return <div>{item.name}：{item.value}</div>
+          })
+        }
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import * as CounterActions from '../actions/index';
-import Body from './Body';
 import React from 'react';
 import NavBar from './NavBar';
 import {bindActionCreators} from 'redux';
@@ -10,23 +9,24 @@ const mapStateToProps = state => {
     return {
       reducer: state.reducer,
       modalReducer: state.modalReducer,
-      inputTextReducer: state.inputTextReducer
+      inputTextReducer: state.inputTextReducer,
+      calculatorLogicReducer: state.calculatorLogicReducer,
+      navBarReducer: state.navBarReducer
     };
-  }
-  // actionをマッピングする
-  const mapDispatchToProps = dispatch => {
-    const actionList = CounterActions.default;
+}
+// actionをマッピングする
+const mapDispatchToProps = dispatch => {
+  const actionList = CounterActions.default;
     return {
       actions: bindActionCreators(actionList, dispatch)
     };
-  }
+}
 
 class App extends React.Component {
   render() {
     return (
         <div style={{overflowX: 'hidden'}}>
             <NavBar {...this.props} />
-            <Body {...this.props} />
         </div>
     );
   }

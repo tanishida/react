@@ -25,10 +25,11 @@ function setAction(val) {
   };
 }
 
-function addAction(text) {
+function addAction(text, name) {
   return {
     type: types.TEXT_ADD,
-    text
+    text,
+    name
   };
 }
 
@@ -44,6 +45,52 @@ function formDeleteAction() {
   };
 }
 
+function inputNumberAction(inputValue) {
+  return {
+    type: types.INPUT_NUMBER,
+    inputValue
+  };
+}
+
+function calculLogicAcrion(prevClaculResult, inputNumber) {
+  return {
+    type: types.CALCUL_LOGIC,
+    prevClaculResult,
+    inputNumber
+  };
+}
+
+function deleteNumberAction() {
+  return {
+    type: types.DELETE_NUMBER
+  };
+}
+
+function inputTextToggleAction() {
+  return {
+    type: types.INPUT_TEXT_TOGGLE
+  };
+}
+
+function calculatorToggleAction() {
+  return {
+    type: types.CALUCLOTOR_TOGGLE
+  };
+}
+
+function bodyToggleAction() {
+  return {
+    type: types.BODY_TOGGLE
+  };
+}
+
+function setNameAction(name) {
+  return {
+    type: types.NAME_SET,
+    name
+  }
+}
+
 const CounterActions = {
   increment,
   decrement,
@@ -51,7 +98,15 @@ const CounterActions = {
   setAction,
   addAction,
   deleteAction,
-  formDeleteAction
+  formDeleteAction,
+  inputNumberAction,
+  calculLogicAcrion,
+  deleteNumberAction,
+  inputTextToggleAction,
+  calculatorToggleAction,
+  bodyToggleAction,
+  setNameAction
+
 };
 
 export default CounterActions;

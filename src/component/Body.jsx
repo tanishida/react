@@ -17,7 +17,14 @@ class Body extends React.Component {
           <Col xs={2}></Col>
           <Col xs={8}>
               <Panel>
-                <Panel.Heading>sampleかうんたー</Panel.Heading>
+                <Panel.Heading>
+                  sampleカウンター
+                  <span class="glyphicon glyphicon-remove" 
+                    style={{float: 'right'}} 
+                    title={'閉じる'}
+                    onClick={() => this.props.actions.bodyToggleAction()}
+                  />
+                </Panel.Heading>
                 <Panel.Body>
                   <h2>{this.props.reducer.value}</h2>
                   <Button onClick={this.props.actions.increment}>増加</Button>
@@ -31,7 +38,14 @@ class Body extends React.Component {
           <Col xs={2}></Col>
           <Col xs={8}>
             <Panel>
-              <Panel.Heading>sampleだいあろぐ</Panel.Heading>
+              <Panel.Heading>
+                sampleダイアログ
+                <span class="glyphicon glyphicon-remove" 
+                  style={{float: 'right'}} 
+                  title={'閉じる'}
+                  onClick={() => this.props.actions.bodyToggleAction()}
+                />
+              </Panel.Heading>
               <Panel.Body>
                 <h4>material UI</h4>
                 <RaisedButton label={'開く'} onClick={() => this.props.actions.dialogAction()} />

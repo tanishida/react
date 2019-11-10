@@ -1,7 +1,7 @@
 import React from 'react';
 import RenderList from './RenderList';
 import {Row, Col, Panel} from 'react-bootstrap';
-import {TextField, RaisedButton} from 'material-ui';
+import {TextField, RaisedButton, Snackbar} from 'material-ui';
 
 class InputText extends React.Component {
   constructor() {
@@ -12,15 +12,19 @@ class InputText extends React.Component {
     }
   }
   onChangeText(e) {
-    this.setState({
-      text: e.target.value
-    })
     this.props.actions.setAction(e.target.value);
   }
+  onChangeName(e) {
+    this.props.actions.setNameAction(e.target.value);
+  }
   onAddText() {
+    const formName = this.props.inputTextReducer.name;
     const formValue = this.props.inputTextReducer.text;
+    if (formName === '') {
+      return;
+    }
     if (formValue !== '' && formValue !== undefined) {
-      this.props.actions.addAction(formValue);
+      this.props.actions.addAction(formValue, formName);
       this.props.actions.formDeleteAction();
     }
   }
@@ -32,7 +36,7 @@ class InputText extends React.Component {
     if (e.keyCode === ENTER) {
       this.onAddText();
     }
-}
+  }
   render() {
     return (
       <div>
@@ -41,7 +45,7 @@ class InputText extends React.Component {
           <Col xs={10}>
             <Panel>
               <Panel.Heading>
-                TODO
+                メッセージ
                 <span class="glyphicon glyphicon-remove" 
                   style={{float: 'right'}} 
                   title={'閉じる'}
@@ -50,11 +54,19 @@ class InputText extends React.Component {
               </Panel.Heading>
               <Panel.Body>
                 <TextField
-                  label="name"
+                  required
+                  id="name"
+                  value={this.props.inputTextReducer.name}
+                  onChange={e => this.onChangeName(e)}
+                  floatingLabelText="なまえ"
+                  margin="normal"
+                />
+                <TextField
+                  label="input"
                   value={this.props.inputTextReducer.text}
                   onChange={e => this.onChangeText(e)}
                   hintText="入力"
-                  floatingLabelText="TODOリストを追加"
+                  floatingLabelText="メッセージを入力"
                   fullWidth={true}
                   onKeyDown={e => this.onEnter(e)}
                 />

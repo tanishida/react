@@ -16,7 +16,7 @@ class Calculator extends React.Component {
         '7','8','9','+'
       ],
       buttonModule4: [
-        '0', '00','-'
+        '0', '00', '000','-'
       ]
     }
   }

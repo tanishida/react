@@ -12,8 +12,8 @@ class RenderList extends React.Component {
     return (
       <div style={this.styles}>
         {
-          items.map((index, item) => {
-            return <div>{item}．{index}</div>
+          items.map(item => {
+            return <div>{item.name}：{item.value}</div>
           })
         }
       </div>

@@ -25,10 +25,11 @@ function setAction(val) {
   };
 }
 
-function addAction(text) {
+function addAction(text, name) {
   return {
     type: types.TEXT_ADD,
-    text
+    text,
+    name
   };
 }
 
@@ -77,6 +78,19 @@ function calculatorToggleAction() {
   };
 }
 
+function bodyToggleAction() {
+  return {
+    type: types.BODY_TOGGLE
+  };
+}
+
+function setNameAction(name) {
+  return {
+    type: types.NAME_SET,
+    name
+  }
+}
+
 const CounterActions = {
   increment,
   decrement,
@@ -89,7 +103,9 @@ const CounterActions = {
   calculLogicAcrion,
   deleteNumberAction,
   inputTextToggleAction,
-  calculatorToggleAction
+  calculatorToggleAction,
+  bodyToggleAction,
+  setNameAction
 
 };
 

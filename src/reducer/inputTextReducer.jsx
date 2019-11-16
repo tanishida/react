@@ -2,7 +2,7 @@ import * as types from '../actionTypes/index';
 
 const initialState = {
   text: '',
-  list: [],
+  message: [],
   name: ''
 };
 
@@ -11,31 +11,31 @@ export default function inputTextReducer(state = initialState, action) {
     case types.TEXT_SET:
       return {
         text: action.val,
-        list: state.list,
+        message: state.list,
         name: state.name
       };
     case types.TEXT_ADD:
       return {
         text: state.text,
-        list: state.list.concat([{'name': action.name, 'value': action.text}]),
+        message: action.message,
         name: state.name
       };
     case types.TEXT_DELETE:
       return {
         text: '',
-        list: initialState.list,
+        message: state.message,
         name: state.name
       };
     case types.FORM_DELETE:
       return {
         text: '',
-        list: state.list,
+        message: state.message,
         name: state.name
       };
     case types.NAME_SET:
       return {
         text: state.val,
-        list: state.list,
+        message: state.message,
         name: action.name
       };
     default:

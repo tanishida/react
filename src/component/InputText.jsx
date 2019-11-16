@@ -2,6 +2,7 @@ import React from 'react';
 import RenderList from './RenderList';
 import {Row, Col, Panel} from 'react-bootstrap';
 import {TextField, RaisedButton, Snackbar} from 'material-ui';
+import api from '../api';
 
 class InputText extends React.Component {
   constructor() {
@@ -24,7 +25,8 @@ class InputText extends React.Component {
       return;
     }
     if (formValue !== '' && formValue !== undefined) {
-      this.props.actions.addAction(formValue, formName);
+      api.postMessegeAction(formValue, formName);
+      //this.props.actions.addAction(data);
       this.props.actions.formDeleteAction();
     }
   }
@@ -38,6 +40,7 @@ class InputText extends React.Component {
     }
   }
   render() {
+    api.fetchMessegeAction();
     return (
       <div>
         <Row>

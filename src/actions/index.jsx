@@ -25,11 +25,10 @@ function setAction(val) {
   };
 }
 
-function addAction(text, name) {
+function addAction(message) {
   return {
     type: types.TEXT_ADD,
-    text,
-    name
+    message
   };
 }
 

@@ -11,7 +11,7 @@ export default function inputTextReducer(state = initialState, action) {
     case types.TEXT_SET:
       return {
         text: action.val,
-        message: state.list,
+        message: action.list,
         name: state.name
       };
     case types.TEXT_ADD:

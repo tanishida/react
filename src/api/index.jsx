@@ -1,9 +1,6 @@
-import actions from '../actions';
-
 async function fetchMessegeAction() {
     const response = await fetch('../../api/v1/list');
-    const messageList = await response.json();
-    actions.addAction(messageList);
+    return await response.json();
 };
 
 async function postMessegeAction(text, name) {

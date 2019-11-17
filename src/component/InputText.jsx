@@ -13,7 +13,8 @@ class InputText extends React.Component {
     }
   }
   onChangeText(e) {
-    this.props.actions.setAction(e.target.value);
+    const items = this.props.inputTextReducer.message !== undefined ? this.props.inputTextReducer.message : [];
+    this.props.actions.setAction(e.target.value, items);
   }
   onChangeName(e) {
     this.props.actions.setNameAction(e.target.value);
@@ -26,8 +27,10 @@ class InputText extends React.Component {
     }
     if (formValue !== '' && formValue !== undefined) {
       api.postMessegeAction(formValue, formName);
-      //this.props.actions.addAction(data);
-      this.props.actions.formDeleteAction();
+      api.fetchMessegeAction().then(item => {
+        this.props.actions.addAction(item);
+      });
+      this.props.actions.formDeleteAction()
     }
   }
   onDeleteAction() {
@@ -39,8 +42,12 @@ class InputText extends React.Component {
       this.onAddText();
     }
   }
+  componentDidMount() {
+    api.fetchMessegeAction().then(item => {
+      this.props.actions.addAction(item);
+    });
+  }
   render() {
-    api.fetchMessegeAction();
     return (
       <div>
         <Row>
@@ -57,7 +64,6 @@ class InputText extends React.Component {
               </Panel.Heading>
               <Panel.Body>
                 <TextField
-                  required
                   id="name"
                   value={this.props.inputTextReducer.name}
                   onChange={e => this.onChangeName(e)}
@@ -76,7 +82,7 @@ class InputText extends React.Component {
               <RenderList {...this.props} />
               <div style={this.styles}>
                 <RaisedButton secondary={true} label={'追加'} onClick={() => this.onAddText()} />
-                <RaisedButton label={'すべて削除'} onClick={() => this.onDeleteAction()} />
+                <RaisedButton disabled={true} label={'すべて削除'} onClick={() => this.onDeleteAction()} />
               </div>
               </Panel.Body>
             </Panel>

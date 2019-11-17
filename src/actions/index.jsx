@@ -18,10 +18,11 @@ function dialogAction() {
   };
 }
 
-function setAction(val) {
+function setAction(val, list) {
   return {
     type: types.TEXT_SET,
-    val
+    val,
+    list
   };
 }
 

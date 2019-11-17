@@ -8,13 +8,7 @@ class RenderList extends React.Component {
     }
   }
   render() {
-    let items = this.props.inputTextReducer.message !== undefined ? this.props.inputTextReducer.message : [];
-    console.log('描画直前');
-    console.log(items);
-    items.forEach(item => {
-      console.log('name:' + item.name);
-      console.log('value:' + item.value);
-    });
+    const items = this.props.inputTextReducer.message !== undefined ? this.props.inputTextReducer.message : [];
     return (
       <div style={this.styles}>
         {

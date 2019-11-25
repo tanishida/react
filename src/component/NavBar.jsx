@@ -8,7 +8,13 @@ class NavBar extends React.Component {
   constructor() {
     super()
     this.state = {
-      open: false
+      open: true,
+      openStyle: {
+        marginLeft: '256px'
+      },
+      closeStyle: {
+        marginLeft: '0px'
+      }      
     }
   }
   handleToggle() {
@@ -17,22 +23,17 @@ class NavBar extends React.Component {
     })
   }
 
+
   render() {
     let inputText = this.props.navBarReducer.isOpenInputText ? <InputText {...this.props} /> : '';
     let calculator = this.props.navBarReducer.isOpenCalculator ? <Calculator {...this.props} /> : '';
     let body = this.props.navBarReducer.isOpenBody ? <Body {...this.props} /> : '';
     return (
-      <div>
+      <div style={this.state.open ? this.state.openStyle : this.state.closeStyle}>
         <Drawer
-          docked={false}
+          docked={true}
           open={this.state.open}
         >
-          <span class="glyphicon glyphicon-remove" 
-                style={{marginTop: 10, marginLeft: 233}} 
-                title={'閉じる'} 
-                aria-hidden={false} 
-                onClick={() => this.handleToggle()}>
-          </span>
           <MenuItem onClick={() => this.props.actions.inputTextToggleAction()} disabled={this.props.navBarReducer.isOpenInputText}>メッセージ</MenuItem>
           <MenuItem onClick={() => this.props.actions.calculatorToggleAction()} disabled={this.props.navBarReducer.isOpenCalculator}>電卓</MenuItem>
           <MenuItem onClick={() => this.props.actions.bodyToggleAction()} disabled={this.props.navBarReducer.isOpenBody}>サンプル</MenuItem>

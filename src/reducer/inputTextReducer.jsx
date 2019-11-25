@@ -34,7 +34,7 @@ export default function inputTextReducer(state = initialState, action) {
       };
     case types.NAME_SET:
       return {
-        text: state.val,
+        text: state.text,
         message: state.message,
         name: action.name
       };

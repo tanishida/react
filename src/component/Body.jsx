@@ -14,8 +14,8 @@ class Body extends React.Component {
     return (
       <div>
         <Row style={this.styles}>
-          <Col xs={2}></Col>
-          <Col xs={8}>
+          <Col xs={1}></Col>
+          <Col xs={10}>
               <Panel>
                 <Panel.Heading>
                   sampleカウンター
@@ -32,11 +32,11 @@ class Body extends React.Component {
                 </Panel.Body>
               </Panel>
           </Col>
-          <Col xs={2}></Col>
+          <Col xs={1}></Col>
         </Row>
         <Row style={this.styles}>
-          <Col xs={2}></Col>
-          <Col xs={8}>
+          <Col xs={1}></Col>
+          <Col xs={10}>
             <Panel>
               <Panel.Heading>
                 sampleダイアログ
@@ -56,7 +56,7 @@ class Body extends React.Component {
               <RaisedButton label={'閉じる'} onClick={() => this.props.actions.dialogAction()} />
             </Dialog>
           </Col>
-          <Col xs={2}></Col>
+          <Col xs={1}></Col>
         </Row>
       </div>
     );

@@ -62,4 +62,6 @@ app.put('/api/v1/item/:id', (req, res) => {
 });
 
 // ポート8000でサーバを立てる
-app.listen(8000, () => console.log('Listening on port 8000'));
+app.listen(8000, () => {
+    console.log('Listening on port 8000');
+});

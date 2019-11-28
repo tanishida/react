@@ -13,7 +13,7 @@ module.exports = {
     port: '3000',
    },
   resolve: {
-    modules: "node_modules",
+    modules: [path.resolve(__dirname, "src"), "node_modules"],
     extensions: ['.js', '.jsx']
   },
   module: {

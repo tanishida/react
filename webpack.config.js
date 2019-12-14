@@ -3,17 +3,17 @@ const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, './index.js'),
+  entry: path.resolve('./index.js'),
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve('./dist'),
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve('dist'),
     port: '3000',
    },
   resolve: {
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    modules: [path.resolve("src"), "node_modules"],
     extensions: ['.js', '.jsx']
   },
   module: {

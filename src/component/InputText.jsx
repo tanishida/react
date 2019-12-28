@@ -2,6 +2,7 @@ import React from 'react';
 import RenderList from './RenderList';
 import {Row, Col, Panel} from 'react-bootstrap';
 import {TextField, RaisedButton, Snackbar} from 'material-ui';
+import LinearProgress from 'material-ui/LinearProgress';
 import api from '../api';
 
 class InputText extends React.Component {
@@ -46,6 +47,14 @@ class InputText extends React.Component {
     api.fetchMessegeAction().then(item => {
       this.props.actions.addAction(item);
     });
+    this.intervalId = setInterval(() => {
+      api.fetchMessegeAction().then(item => {
+        this.props.actions.addAction(item);
+      });
+    }, 50000);
+  }
+  componentWillUnmount(){
+    clearInterval(this.intervalId);
   }
   render() {
     return (
@@ -79,7 +88,8 @@ class InputText extends React.Component {
                   fullWidth={true}
                   onKeyDown={e => this.onEnter(e)}
                 />
-              <RenderList {...this.props} />
+                <LinearProgress style={{display: this.props.inputTextReducer.progress ? '' : 'none'}} />
+                <RenderList {...this.props} />
               <div style={this.styles}>
                 <RaisedButton secondary={true} label={'追加'} onClick={() => this.onAddText()} />
                 <RaisedButton disabled={true} label={'すべて削除'} onClick={() => this.onDeleteAction()} />

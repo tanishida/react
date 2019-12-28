@@ -1,8 +1,7 @@
-const tetsudo = 'https://tetsudo.rti-giken.jp/free/delay.json';
+import config from '../config';
 
 const fetchMessegeAction = async () => {
-    const local = 'http://localhost:8000/api/v1/list';
-    const response = await fetch(local, {
+    const response = await fetch(config.GET_AWS, {
       mode: 'cors',
       method: 'GET'
     }).catch(err => console.log(`'${err}'【GET】`));
@@ -10,20 +9,31 @@ const fetchMessegeAction = async () => {
 };
 
 const postMessegeAction = async (text, name) => {
-    const local = 'http://localhost:8000/api/v1/add';
     const body = new FormData();
     body.append('name', name);
     body.append('value', text);
-    await fetch(local, {
+    await fetch(config.POST_AWS, {
       mode: 'cors',
       method: 'POST',
       body
     }).catch(err => console.log(`'${err}'【POST】`));
 }
 
+const getAuthorization = async (accessToken) => {
+  const ACCESS_TOKEN = accessToken.slice(14);
+  let body = new FormData();
+  body.append('token', ACCESS_TOKEN);
+  const response = await fetch(config.GET_LOCAL2, {
+    mode: 'cors',
+    method:'POST',
+    body
+  }).catch(err => console.log(`'${err}'【GET】`));
+}
+
 const CounterActions = {
     fetchMessegeAction,
-    postMessegeAction
+    postMessegeAction,
+    getAuthorization
 };
   
 export default CounterActions;

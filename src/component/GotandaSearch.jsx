@@ -1,22 +1,14 @@
 import React from 'react';
-import Root from './Root';
-
+import Root from './RootSearch';
 
 class GotandaSearch extends React.Component {
-    constructor() {
-      super()
-      this.state = {
-        style: {
-          marginTop: 10,
-          width: '-webkit-fill-available',
-          font: '-webkit-mini-control'
-        }
-      }
-    }
     render() {
         return (
           <div className={this.props.activeKey !== '1' ? 'hidden' : ''}>
             <Root />
+            <div>
+              検索結果　 {} 　件
+            </div>
           </div>
       );
     }

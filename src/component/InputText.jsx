@@ -2,7 +2,9 @@ import React from 'react';
 import RenderList from './RenderList';
 import {Row, Col, Panel} from 'react-bootstrap';
 import {TextField, RaisedButton, Snackbar} from 'material-ui';
-import LinearProgress from 'material-ui/LinearProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import api from '../api';
 
 class InputText extends React.Component {
@@ -65,11 +67,14 @@ class InputText extends React.Component {
             <Panel>
               <Panel.Heading>
                 メッセージ
-                <span class="glyphicon glyphicon-remove" 
-                  style={{float: 'right'}} 
+                <IconButton
+                  color="inherit"
                   title={'閉じる'}
+                  style={{float: 'right', margin: '-10px'}}
                   onClick={() => this.props.actions.inputTextToggleAction()}
-                />
+                  edge="start">
+                  <CloseIcon />
+                </IconButton>
               </Panel.Heading>
               <Panel.Body>
                 <TextField
@@ -88,7 +93,7 @@ class InputText extends React.Component {
                   fullWidth={true}
                   onKeyDown={e => this.onEnter(e)}
                 />
-                <LinearProgress style={{display: this.props.inputTextReducer.progress ? '' : 'none'}} />
+                <CircularProgress style={{display: this.props.inputTextReducer.progress ? '' : 'none'}} />
                 <RenderList {...this.props} />
               <div style={this.styles}>
                 <RaisedButton secondary={true} label={'追加'} onClick={() => this.onAddText()} />

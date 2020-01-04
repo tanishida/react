@@ -4,6 +4,8 @@ import {RaisedButton, Card} from 'material-ui';
 import api from '../api';
 import config from '../config';
 import GotandaSearch from './GotandaSearch';
+import GotandaRegist from './GotandaRegist';
+import image from '../image/IMG_20180430_025849.jpg';
 
 class Gotanda extends React.Component {
   constructor() {
@@ -27,16 +29,12 @@ class Gotanda extends React.Component {
           <Col xs={10}>
           <Panel>
               <Panel.Body>
-                <span class="glyphicon glyphicon-remove" 
-                    style={{float: 'right'}} 
-                    title={'閉じる'}
-                    onClick={() => this.props.actions.gotandaToggleAction()}
-                  />
+                <img style={{ width: '100%', height: '100%', marginBottom: '10px'}} src={image} alt='五反田' />
                 <Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={e => this.handleSelect(e)}>
-                    <NavItem eventKey="1">
+                    <NavItem eventKey="1"　title="五反田の情報を検索">
                     検索
                     </NavItem>
-                    <NavItem eventKey="2" title="Item">
+                    <NavItem eventKey="2" title="五反田の情報を登録">
                     登録
                     </NavItem>
                     <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
@@ -48,6 +46,7 @@ class Gotanda extends React.Component {
                     </NavDropdown>
                 </Nav>
                 <GotandaSearch activeKey={this.state.activeKey}/>
+                <GotandaRegist activeKey={this.state.activeKey}/>
               </Panel.Body>
             </Panel>
           </Col>

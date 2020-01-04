@@ -5,27 +5,15 @@ import { Provider } from 'react-redux';
 import App from './src/component/App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import configureStore from './src/store/configureStore';
+import MediaQuery from "react-responsive";
 
 const store = configureStore();
-// import {createStore} from 'redux';
-// import {Provider} from 'react-redux';
-// import reducer from './src/reducer/reducer';
-
-// const store = createStore(reducer);
-
-// class App extends React.Component{
-//   render(){
-//     return(
-//       <div>Hello Worlds</div>
-//     );
-//   }
-// }
 
 ReactDOM.render(
   <MuiThemeProvider>
     <Provider store={store}>
-      <div>
+      <MediaQuery query="(min-width: 767px)">
         <App />
-      </div>
+      </MediaQuery>
     </Provider>
   </MuiThemeProvider>, document.getElementById("root"))

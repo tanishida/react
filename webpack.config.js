@@ -14,7 +14,7 @@ module.exports = {
    },
   resolve: {
     modules: [path.resolve("src"), "node_modules"],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', 'jpg']
   },
   module: {
     rules: [
@@ -33,7 +33,17 @@ module.exports = {
         query: {
           presets:['react','es2015']
         }
-      }
+      },
+      {
+        test: /\.jpg$/,
+         use: [
+           {
+             loader: 'file-loader',
+             options: {
+             }  
+           }
+         ]
+       }
     ]
   },
   plugins: [

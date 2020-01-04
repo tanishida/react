@@ -1,7 +1,7 @@
 import config from '../config';
 
 const fetchMessegeAction = async () => {
-    const response = await fetch(config.GET_AWS, {
+    const response = await fetch(config.GET_LOCAL, {
       mode: 'cors',
       method: 'GET'
     }).catch(err => console.log(`'${err}'【GET】`));
@@ -12,7 +12,7 @@ const postMessegeAction = async (text, name) => {
     const body = new FormData();
     body.append('name', name);
     body.append('value', text);
-    await fetch(config.POST_AWS, {
+    await fetch(config.POST_LOCAL, {
       mode: 'cors',
       method: 'POST',
       body

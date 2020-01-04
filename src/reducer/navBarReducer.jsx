@@ -1,11 +1,11 @@
 import * as types from '../actionTypes/index';
 
 const initialState = {
-  isOpenInputText: true,
-  isOpenTwcas: true,
+  isOpenInputText: false,
+  isOpenTwcas: false,
   isOpenCalculator: false,
   isOpenBody: false,
-  isOpenGotanda: false
+  isOpenGotanda: true
 };
 
 export default function navBarReducer(state = initialState, action) {

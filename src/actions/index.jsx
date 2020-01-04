@@ -91,6 +91,24 @@ function setNameAction(name) {
   }
 }
 
+function twcasToggleAction() {
+  return {
+    type: types.TWCAS_TOGGLE
+  };
+}
+
+function progressToggleAction() {
+  return {
+    type: types.PROGRESS_TOGGLE
+  };
+}
+
+function gotandaToggleAction() {
+  return {
+    type: types.GOTANDA_TOGGLE
+  };
+}
+
 const CounterActions = {
   increment,
   decrement,
@@ -105,7 +123,10 @@ const CounterActions = {
   inputTextToggleAction,
   calculatorToggleAction,
   bodyToggleAction,
-  setNameAction
+  setNameAction,
+  twcasToggleAction,
+  progressToggleAction,
+  gotandaToggleAction
 
 };
 

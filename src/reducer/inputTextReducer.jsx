@@ -3,7 +3,8 @@ import * as types from '../actionTypes/index';
 const initialState = {
   text: '',
   message: [],
-  name: ''
+  name: '',
+  progress: false
 };
 
 export default function inputTextReducer(state = initialState, action) {
@@ -12,13 +13,15 @@ export default function inputTextReducer(state = initialState, action) {
       return {
         text: action.val,
         message: action.list,
-        name: state.name
+        name: state.name,
+        progress: state.progress
       };
     case types.TEXT_ADD:
       return {
         text: state.text,
         message: action.message,
-        name: state.name
+        name: state.name,
+        progress:state.progress
       };
     case types.TEXT_DELETE:
       return {
@@ -36,8 +39,16 @@ export default function inputTextReducer(state = initialState, action) {
       return {
         text: state.text,
         message: state.message,
-        name: action.name
+        name: action.name,
+        progress: state.progress
       };
+    case types.PROGRESS_TOGGLE:
+      return {
+        text: state.text,
+        message: state.message,
+        name: action.name,
+        progress: !state.progress
+      }
     default:
     return state;
   }

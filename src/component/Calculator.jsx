@@ -1,6 +1,8 @@
 import React from 'react';
 import {Row, Col, Panel} from 'react-bootstrap';
 import {TextField, RaisedButton} from 'material-ui';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 class Calculator extends React.Component {
   constructor() {
@@ -51,11 +53,14 @@ class Calculator extends React.Component {
             <Panel>
               <Panel.Heading>
                 電卓
-                <span class="glyphicon glyphicon-remove" 
-                  style={{float: 'right'}} 
+                <IconButton
+                  color="inherit"
                   title={'閉じる'}
+                  style={{float: 'right', margin: '-10px'}}
                   onClick={() => this.props.actions.calculatorToggleAction()}
-                />
+                  edge="start">
+                  <CloseIcon />
+                </IconButton>
               </Panel.Heading>
               <Panel.Body>
                 <div style={this.styles}>

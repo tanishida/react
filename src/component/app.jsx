@@ -3,6 +3,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 
 // Appコンポーネントにstateを流し込む
 const mapStateToProps = state => {
@@ -24,10 +25,14 @@ const mapDispatchToProps = dispatch => {
 
 class App extends React.Component {
   render() {
-    return (
-        <div style={{overflowX: 'hidden'}}>
+    return (        
+      <Grid container justify="center">
+        <Grid item xs={12}>
+          <div style={{overflowX: 'hidden'}}>
             <NavBar {...this.props} />
-        </div>
+          </div>
+        </Grid>
+      </Grid>
     );
   }
 }

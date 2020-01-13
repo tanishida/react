@@ -1,21 +1,26 @@
 import React from 'react';
-import {MenuItem, AppBar} from 'material-ui';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import SearchIcon from '@material-ui/icons/Search';
-import PlusOneIcon from '@material-ui/icons/PlusOne';
+import ContactsIcon from '@material-ui/icons/Contacts';
 import RateReviewIcon from '@material-ui/icons/RateReview';
 import Drawer from '@material-ui/core/Drawer';
 import InputText from './InputText';
 import Calculator from './Calculator';
 import Body from './Body';
-import Twcas from './Twcas';
 import Gotanda from './Gotanda';
-import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Grid from '@material-ui/core/Grid';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 class NavBar extends React.Component {
   constructor() {
@@ -39,10 +44,8 @@ class NavBar extends React.Component {
     })
   }
 
-
   render() {
     let inputText = this.props.navBarReducer.isOpenInputText ? <InputText {...this.props} /> : '';
-    let twcas = this.props.navBarReducer.isOpenTwcas ? <Twcas {...this.props} /> : '';
     let calculator = this.props.navBarReducer.isOpenCalculator ? <Calculator {...this.props} /> : '';
     let body = this.props.navBarReducer.isOpenBody ? <Body {...this.props} /> : '';
     let gotanda = this.props.navBarReducer.isOpenGotanda ? <Gotanda {...this.props} /> : '';
@@ -69,36 +72,42 @@ class NavBar extends React.Component {
                 onClick={() => this.props.actions.gotandaToggleAction()} 
                 disabled={this.props.navBarReducer.isOpenGotanda}>
                   <ListItemIcon><SearchIcon style={this.state.iconSize} /></ListItemIcon>
-                  <div style={{fontSize: '20px'}}>
-                    五反田の情報を検索
+                  <div style={{fontSize: '15px'}}>
+                    Gotanda information
                   </div>
               </ListItem>
               <ListItem 
                 onClick={() => this.props.actions.inputTextToggleAction()} 
                 disabled={this.props.navBarReducer.isOpenInputText}>
                   <ListItemIcon><RateReviewIcon style={this.state.iconSize} /></ListItemIcon>
-                  <div style={{fontSize: '20px'}}>
-                    メッセージを投稿
+                  <div style={{fontSize: '15px'}}>
+                    Post message
                   </div>
               </ListItem>
               <ListItem 
                 onClick={() => this.props.actions.calculatorToggleAction()} 
                 disabled={this.props.navBarReducer.isOpenCalculator}>
-                  <ListItemIcon><PlusOneIcon style={this.state.iconSize} /></ListItemIcon>
-                  <div style={{fontSize: '20px'}}>
-                    電卓
+                  <ListItemIcon><ContactsIcon style={this.state.iconSize} /></ListItemIcon>
+                  <div style={{fontSize: '15px'}}>
+                    Contact
                   </div>
               </ListItem>
             </Drawer>
-            <AppBar 
-              title="Component demonstration"
-              onLeftIconButtonClick={() => this.handleToggle()}
-              style={{position: 'fixed', top: 0, backgroundColor: 'rgb(0, 0, 0)', height: '80px', alignItems: 'center'}}>
+            <AppBar position="fixed">
+              <Toolbar>
+                <IconButton edge="start" onClick={() => this.handleToggle()} color="inherit" aria-label="menu">
+                  <MenuIcon style={{fontSize: 'x-large'}} />
+                </IconButton>
+                <Typography style={{fontSize: 'x-large', fontWeight: 'bolder'}} variant="h6">
+                  五反田ライク
+                  <ThumbUpAltIcon style={{fontSize: 'x-large', marginBottom: '-2px'}} />
+                </Typography>
+              </Toolbar>
             </AppBar>
-            <div style={{marginTop: 90}}>
+
+            <div style={{marginTop: 65}}>
               {gotanda}
               {inputText}
-              {calculator}
             </div>
           </Grid>
         </Grid>

@@ -12,7 +12,9 @@ const mapStateToProps = state => {
       modalReducer: state.modalReducer,
       inputTextReducer: state.inputTextReducer,
       calculatorLogicReducer: state.calculatorLogicReducer,
-      navBarReducer: state.navBarReducer
+      navBarReducer: state.navBarReducer,
+      gotandaRegistReducer: state.gotandaRegistReducer,
+      gotandaSearchReducer: state.gotandaSearchReducer
     };
 }
 // actionをマッピングする

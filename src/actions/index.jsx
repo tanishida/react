@@ -91,12 +91,6 @@ function setNameAction(name) {
   }
 }
 
-function twcasToggleAction() {
-  return {
-    type: types.TWCAS_TOGGLE
-  };
-}
-
 function progressToggleAction() {
   return {
     type: types.PROGRESS_TOGGLE
@@ -109,6 +103,50 @@ function gotandaToggleAction() {
   };
 }
 
+function radioRedistAction(value) {
+  return {
+    type: types.RADIO_REGIST,
+    value
+  }
+}
+
+function inputShopNameAction(inputValue) {
+  return {
+    type: types.NAME_REGIST,
+    inputValue
+  };
+}
+
+function inputHandleNameAction(inputValue) {
+  return {
+    type: types.HANDLE_NAME_REGIST,
+    inputValue
+  };
+}
+
+function inputDateAction(inputDate) {
+  return {
+    type: types.DATE_REGIST,
+    inputDate
+  };
+}
+
+function inputCommentAction(inputComment) {
+  return {
+    type: types.COMMENT_REGIST,
+    inputComment
+  };
+}
+function inputSearchResultAction(handleName, shopName, date, activeRadio, comment) {
+  return {
+    type: types.SEARCH_RESULT,
+    handleName,
+    shopName,
+    date,
+    activeRadio,
+    comment
+  };
+}
 const CounterActions = {
   increment,
   decrement,
@@ -124,9 +162,14 @@ const CounterActions = {
   calculatorToggleAction,
   bodyToggleAction,
   setNameAction,
-  twcasToggleAction,
   progressToggleAction,
-  gotandaToggleAction
+  gotandaToggleAction,
+  radioRedistAction,
+  inputShopNameAction,
+  inputHandleNameAction,
+  inputDateAction,
+  inputCommentAction,
+  inputSearchResultAction
 
 };
 

@@ -1,11 +1,9 @@
 import React from 'react';
-import {Row, Col, Panel, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import {RaisedButton, Card} from 'material-ui';
-import api from '../api';
-import config from '../config';
+import {Panel, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import GotandaSearch from './GotandaSearch';
 import GotandaRegist from './GotandaRegist';
 import image from '../image/IMG_20180430_025849.jpg';
+import Grid from '@material-ui/core/Grid';
 
 class Gotanda extends React.Component {
   constructor() {
@@ -24,12 +22,12 @@ class Gotanda extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col xs={1}></Col>
-          <Col xs={10}>
+        <Grid container justify="center">
+          <Grid xs={1}></Grid>
+          <Grid item xs={10}>
           <Panel>
               <Panel.Body>
-                <img style={{ width: '100%', height: '100%', marginBottom: '10px'}} src={image} alt='五反田' />
+                <img style={{ width: '100%', height: '130px', marginBottom: '10px'}} src={image} alt='五反田' />
                 <Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={e => this.handleSelect(e)}>
                     <NavItem eventKey="1"　title="五反田の情報を検索">
                     検索
@@ -37,21 +35,32 @@ class Gotanda extends React.Component {
                     <NavItem eventKey="2" title="五反田の情報を登録">
                     登録
                     </NavItem>
-                    <NavDropdown eventKey="4" title="Dropdown" id="nav-dropdown">
-                    <MenuItem eventKey="4.1">Action</MenuItem>
-                    <MenuItem eventKey="4.2">Another action</MenuItem>
-                    <MenuItem eventKey="4.3">Something else here</MenuItem>
-                    <MenuItem divider />
-                    <MenuItem eventKey="4.4">Separated link</MenuItem>
-                    </NavDropdown>
                 </Nav>
-                <GotandaSearch activeKey={this.state.activeKey}/>
-                <GotandaRegist activeKey={this.state.activeKey}/>
+                <GotandaSearch 
+                  activeKey={this.state.activeKey}
+                  inputSearchResultAction={this.props.actions.inputSearchResultAction}
+                  gotandaList={this.props.gotandaSearchReducer.gotandaList}
+                  dialogOpen={this.props.modalReducer.dialogOpen}
+                  dialogAction={this.props.actions.dialogAction}
+                />
+                <GotandaRegist
+                  activeKey={this.state.activeKey} 
+                  radioList={this.props.gotandaRegistReducer.radioList}
+                  radioAction={this.props.actions.radioRedistAction}
+                  shopName={this.props.gotandaRegistReducer.shopName}
+                  inputShopNameAction={this.props.actions.inputShopNameAction}
+                  handleName={this.props.gotandaRegistReducer.handleName}
+                  inputHandleNameAction={this.props.actions.inputHandleNameAction}
+                  date={this.props.gotandaRegistReducer.date}
+                  inputDateAction={this.props.actions.inputDateAction}
+                  comment={this.props.gotandaRegistReducer.comment}
+                  inputCommentAction={this.props.actions.inputCommentAction}
+                />
               </Panel.Body>
             </Panel>
-          </Col>
-          <Col xs={1}></Col>
-        </Row>
+          </Grid>
+          <Grid xs={1}></Grid>
+        </Grid>
       </div>
     );
   }

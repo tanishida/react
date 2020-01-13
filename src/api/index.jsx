@@ -4,7 +4,7 @@ const fetchMessegeAction = async () => {
     const response = await fetch(config.GET_LOCAL, {
       mode: 'cors',
       method: 'GET'
-    }).catch(err => console.log(`'${err}'【GET】`));
+    }).catch(err => console.log(`'${err}'【GET】message`));
     return await response.json();
 };
 
@@ -16,7 +16,29 @@ const postMessegeAction = async (text, name) => {
       mode: 'cors',
       method: 'POST',
       body
-    }).catch(err => console.log(`'${err}'【POST】`));
+    }).catch(err => console.log(`'${err}'【POST】message`));
+}
+
+const fetchGotandaRegistAction = async () => {
+  const response = await fetch(config.GET_GOTANDA_REGIST_LOCAL, {
+    mode: 'cors',
+    method: 'GET'
+  }).catch(err => console.log(`'${err}'【GET】gotanda regist`));
+  return await response.json();
+};
+
+const postGotandaRegistAction = async (handleName, shopName, date, radio, comment) => {
+  const body = new FormData();
+  body.append('handleName', handleName);
+  body.append('shopName', shopName);
+  body.append('date', date);
+  body.append('radio', radio);
+  body.append('comment', comment);
+  await fetch(config.POST_GOTANDA_REGIST_LOCAL, {
+    mode: 'cors',
+    method: 'POST',
+    body
+  }).catch(err => console.log(`'${err}'【POST】gotanda regist`));
 }
 
 const getAuthorization = async (accessToken) => {
@@ -33,7 +55,9 @@ const getAuthorization = async (accessToken) => {
 const CounterActions = {
     fetchMessegeAction,
     postMessegeAction,
-    getAuthorization
+    getAuthorization,
+    postGotandaRegistAction,
+    fetchGotandaRegistAction
 };
   
 export default CounterActions;

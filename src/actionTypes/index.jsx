@@ -20,5 +20,11 @@ export const CALUCLOTOR_TOGGLE = 'CALUCLOTOR_TOGGLE';
 export const GOTANDA_TOGGLE = 'GOTANDA_TOGGLE';
 // ボディ
 export const BODY_TOGGLE = 'BODY_TOGGLE';
-// ツイキャス
-export const TWCAS_TOGGLE = 'TWCAS_TOGGLE';
+
+// 登録
+export const RADIO_REGIST = 'RADIO_REGIST';
+export const NAME_REGIST = 'NAME_REGIST';
+export const HANDLE_NAME_REGIST = 'HANDLE_NAME_REGIST';
+export const DATE_REGIST = 'DATE_REGIST';
+export const COMMENT_REGIST = 'COMMENT_REGIST';
+export const SEARCH_RESULT = 'SEARCH_RESULT';

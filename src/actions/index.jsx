@@ -162,6 +162,22 @@ function deleteGotandaRegistAction() {
     type: types.DELETE_REGIST
   };
 }
+
+function inputDetailInfoAction(handleName, shopName, date, activeRadio, comment) {
+  return {
+    type: types.INPUT_DETAIL_INFO,
+    handleName,
+    shopName,
+    date,
+    activeRadio,
+    comment
+  };
+}
+function gotandaDetailToggleAction() {
+  return {
+    type: types.GOTANDA_DETAIL_TOGGLE
+  };
+}
 const CounterActions = {
   increment,
   decrement,
@@ -186,7 +202,9 @@ const CounterActions = {
   inputCommentAction,
   inputSearchResultAction,
   inputPasswordAction,
-  deleteGotandaRegistAction
+  deleteGotandaRegistAction,
+  inputDetailInfoAction,
+  gotandaDetailToggleAction
 
 };
 

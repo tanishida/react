@@ -13,14 +13,13 @@ import Gotanda from './Gotanda';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Grid from '@material-ui/core/Grid';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import GotandaDetail from './GotandaDetail';
 
 class NavBar extends React.Component {
   constructor() {
@@ -35,7 +34,8 @@ class NavBar extends React.Component {
       },
       iconSize: {
         fontSize: '25px'
-      }
+      },
+      showDetail: false
     }
   }
   handleToggle() {
@@ -49,6 +49,9 @@ class NavBar extends React.Component {
     let calculator = this.props.navBarReducer.isOpenCalculator ? <Calculator {...this.props} /> : '';
     let body = this.props.navBarReducer.isOpenBody ? <Body {...this.props} /> : '';
     let gotanda = this.props.navBarReducer.isOpenGotanda ? <Gotanda {...this.props} /> : '';
+    let gotandaDetail = this.props.navBarReducer.isOpenGotandaDetail ? 
+      <GotandaDetail handleName={this.props.gotandaRegistReducer.handleName} /> : '';
+
     return (
       <div>
         <Grid container justify="center">
@@ -108,6 +111,7 @@ class NavBar extends React.Component {
             <div style={{marginTop: 65}}>
               {gotanda}
               {inputText}
+              {gotandaDetail}
             </div>
           </Grid>
         </Grid>

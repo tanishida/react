@@ -42,8 +42,9 @@ class Gotanda extends React.Component {
                   activeKey={this.state.activeKey}
                   inputSearchResultAction={this.props.actions.inputSearchResultAction}
                   gotandaList={this.props.gotandaSearchReducer.gotandaList}
-                  dialogOpen={this.props.modalReducer.dialogOpen}
-                  dialogAction={this.props.actions.dialogAction}
+                  inputDetailInfoAction={this.props.actions.inputDetailInfoAction}
+                  gotandaToggleAction={this.props.actions.gotandaToggleAction}
+                  gotandaDetailToggleAction={this.props.actions.gotandaDetailToggleAction}
                 />
                 <GotandaRegist
                   activeKey={this.state.activeKey} 

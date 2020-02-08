@@ -30,6 +30,11 @@ class GotandaSearch extends React.Component {
   componentWillUnmount(){
     clearInterval(this.intervalId);
   }
+  openDetail(handleName, shopName, date, radio, comment) {
+    this.props.gotandaToggleAction();
+    this.props.inputDetailInfoAction(handleName, shopName, date, radio, comment);
+    this.props.gotandaDetailToggleAction();
+  }
 
     render() {
       const list = this.props.gotandaList !== undefined ? this.props.gotandaList: [];
@@ -39,16 +44,18 @@ class GotandaSearch extends React.Component {
             <Grid container justify="center">
                 {
                   list.map((item, index) => {
-                    return  <Grid item xs={4}>
-                              <Card style={{marginTop: '10px', marginLeft: '10px', backgroundColor: 'whitesmoke'}}>
-                                <div style={{marginTop: '3px', marginLeft: '10px', marginBottom: '-20px'}}>
-                                  「{item.handleName}」さんからの情報
-                                </div><br />
-                                <IconButton title={`${item.shopName}を表示`} onClick={() => this.props.openDetail(index, item.handleName, item.shopName, item.date, item.radio, item.comment)}>
-                                  {item.shopName}
-                                </IconButton>
-                              </Card>
-                            </Grid>
+                    return  (
+                      <Grid item xs={4}>
+                        <Card style={{marginTop: '10px', marginLeft: '10px', backgroundColor: 'whitesmoke'}}>
+                          <div style={{marginTop: '3px', marginLeft: '10px', marginBottom: '-20px'}}>
+                            「{item.handleName}」さんからの情報
+                          </div><br />
+                          <IconButton title={`${item.shopName}を表示`} onClick={() => this.openDetail(item.handleName, item.shopName, item.date, item.radio, item.comment)}>
+                            {item.shopName}
+                          </IconButton>
+                        </Card>
+                      </Grid>
+                    );
                   })
                 }
             </Grid>

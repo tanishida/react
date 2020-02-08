@@ -8,12 +8,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import api from '../api';
+import { EditorFormatColorReset } from 'material-ui/svg-icons';
 
 class GotandaRegist extends React.Component {
     constructor() {
       super()
       this.state = {
-        activeRadio: ''
+        activeRadio: '',
+        snackberOpen: false
       }
     }
     onChangeRadio(e) {
@@ -26,29 +28,38 @@ class GotandaRegist extends React.Component {
     onChangeDate(date) {
       this.props.inputDateAction(date)
     }
+    onChangePassword(e) {
+      this.props.inputPasswordAction(e.target.value)
+    }
     onAddText() {
       const formHandleName = this.props.handleName;
       const formShopName = this.props.shopName;
       const formDate = this.props.date;
       const formRadio = this.state.activeRadio;
       const formComment = this.props.comment;
-      if (formHandleName === '' || formShopName === '' || formRadio === '' || formComment === '') {
+      const formPassword = this.props.password;
+      if (formHandleName === '' || formShopName === '' || formRadio === '' || formComment === '' || formPassword === '') {
         return;
       }
       if (formComment !== '' && formComment !== undefined) {
-        api.postGotandaRegistAction(formHandleName, formShopName, formDate, formRadio, formComment);
-        api.fetchGotandaRegistAction().then(items => {
-          items.forEach(item => {
-            this.props.inputSearchResultAction(item.handleName, item.shopName, item.date, item.radio, item.comment);
-          });
-        });
+        api.postGotandaRegistAction(formHandleName, formShopName, formDate, formRadio, formComment, formPassword);
+        this.setState({snackberOpen: true});
+        this.props.deleteGotandaRegistAction();
       }
+    }
+    componentDidMount() {
+      setInterval(() => {
+        if (this.state.snackberOpen) {
+          this.setState({snackberOpen: false});
+        }
+      }, 10000);
     }
     render() {
       const radio = this.props.radioList;
         return (
           <div className={this.props.activeKey !== '2' ? 'hidden' : ''} style={{marginTop: '10px'}}>
             <Grid container justify="center">
+              <Snackbar message={'登録しました。'} open={this.state.snackberOpen} />
               <Grid item xs={12}>
                 <TextField
                     label="input"
@@ -112,8 +123,17 @@ class GotandaRegist extends React.Component {
                 />
               </Grid>
               <Grid item xs={12}>
+              <TextField
+                  hintText="パスワードを入力"
+                  floatingLabelText="パスワード（編集、削除時に使用）"
+                  value={this.props.password}
+                  onChange={e => this.onChangePassword(e)}
+                  type="password"
+              />
+              </Grid>
+              <Grid item xs={12}>
                 <RaisedButton secondary={true} label={'登録'} onClick={() => this.onAddText()} />
-                <RaisedButton label={'クリア'} />
+                <RaisedButton label={'クリア'}  onClick={() => this.props.deleteGotandaRegistAction()}/>
               </Grid>
             </Grid>
          </div>

@@ -137,14 +137,29 @@ function inputCommentAction(inputComment) {
     inputComment
   };
 }
-function inputSearchResultAction(handleName, shopName, date, activeRadio, comment) {
+
+function inputPasswordAction(inputPassword) {
+  return {
+    type: types.PASSWORD_REGIST,
+    inputPassword
+  };
+}
+
+function inputSearchResultAction(handleName, shopName, date, activeRadio, comment, id) {
   return {
     type: types.SEARCH_RESULT,
     handleName,
     shopName,
     date,
     activeRadio,
-    comment
+    comment,
+    id
+  };
+}
+
+function deleteGotandaRegistAction() {
+  return {
+    type: types.DELETE_REGIST
   };
 }
 const CounterActions = {
@@ -169,7 +184,9 @@ const CounterActions = {
   inputHandleNameAction,
   inputDateAction,
   inputCommentAction,
-  inputSearchResultAction
+  inputSearchResultAction,
+  inputPasswordAction,
+  deleteGotandaRegistAction
 
 };
 

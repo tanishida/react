@@ -137,14 +137,45 @@ function inputCommentAction(inputComment) {
     inputComment
   };
 }
-function inputSearchResultAction(handleName, shopName, date, activeRadio, comment) {
+
+function inputPasswordAction(inputPassword) {
+  return {
+    type: types.PASSWORD_REGIST,
+    inputPassword
+  };
+}
+
+function inputSearchResultAction(handleName, shopName, date, activeRadio, comment, id) {
   return {
     type: types.SEARCH_RESULT,
     handleName,
     shopName,
     date,
     activeRadio,
+    comment,
+    id
+  };
+}
+
+function deleteGotandaRegistAction() {
+  return {
+    type: types.DELETE_REGIST
+  };
+}
+
+function inputDetailInfoAction(handleName, shopName, date, activeRadio, comment) {
+  return {
+    type: types.INPUT_DETAIL_INFO,
+    handleName,
+    shopName,
+    date,
+    activeRadio,
     comment
+  };
+}
+function gotandaDetailToggleAction() {
+  return {
+    type: types.GOTANDA_DETAIL_TOGGLE
   };
 }
 const CounterActions = {
@@ -169,7 +200,11 @@ const CounterActions = {
   inputHandleNameAction,
   inputDateAction,
   inputCommentAction,
-  inputSearchResultAction
+  inputSearchResultAction,
+  inputPasswordAction,
+  deleteGotandaRegistAction,
+  inputDetailInfoAction,
+  gotandaDetailToggleAction
 
 };
 

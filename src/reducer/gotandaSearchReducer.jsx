@@ -24,10 +24,12 @@ export default function gotandaSearchReducer(state = initialState, action) {
                   }
                   return {index: a.index, value: a.value, checked: false};
               }),
-              comment: action.comment
+              comment: action.comment,
+              id: action.id
         };
+        const resultGotandaList = [...new Map(state.gotandaList.concat([gotandaRegistItem]).map((v) => [v.id, v])).values()];
         return {
-            gotandaList: state.gotandaList.concat([gotandaRegistItem])
+            gotandaList: resultGotandaList
         }
     default:
     return state;

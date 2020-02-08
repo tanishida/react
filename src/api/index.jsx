@@ -27,13 +27,14 @@ const fetchGotandaRegistAction = async () => {
   return await response.json();
 };
 
-const postGotandaRegistAction = async (handleName, shopName, date, radio, comment) => {
+const postGotandaRegistAction = async (handleName, shopName, date, radio, comment, password) => {
   const body = new FormData();
   body.append('handleName', handleName);
   body.append('shopName', shopName);
   body.append('date', date);
   body.append('radio', radio);
   body.append('comment', comment);
+  body.append('password', password);
   await fetch(config.POST_GOTANDA_REGIST_LOCAL, {
     mode: 'cors',
     method: 'POST',
@@ -41,21 +42,9 @@ const postGotandaRegistAction = async (handleName, shopName, date, radio, commen
   }).catch(err => console.log(`'${err}'【POST】gotanda regist`));
 }
 
-const getAuthorization = async (accessToken) => {
-  const ACCESS_TOKEN = accessToken.slice(14);
-  let body = new FormData();
-  body.append('token', ACCESS_TOKEN);
-  const response = await fetch(config.GET_LOCAL2, {
-    mode: 'cors',
-    method:'POST',
-    body
-  }).catch(err => console.log(`'${err}'【GET】`));
-}
-
 const CounterActions = {
     fetchMessegeAction,
     postMessegeAction,
-    getAuthorization,
     postGotandaRegistAction,
     fetchGotandaRegistAction
 };

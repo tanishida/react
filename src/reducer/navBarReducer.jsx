@@ -5,7 +5,8 @@ const initialState = {
   isOpenTwcas: false,
   isOpenCalculator: false,
   isOpenBody: false,
-  isOpenGotanda: true
+  isOpenGotanda: true,
+  isOpenGotandaDetail: false
 };
 
 export default function navBarReducer(state = initialState, action) {
@@ -16,7 +17,8 @@ export default function navBarReducer(state = initialState, action) {
         isOpenTwcas: state.isOpenTwcas,
         isOpenCalculator: state.isOpenCalculator,
         isOpenBody: state.isOpenBody,
-        isOpenGotanda: state.isOpenGotanda
+        isOpenGotanda: state.isOpenGotanda,
+        isOpenGotandaDetail: state.isOpenGotandaDetail
       };
     case types.CALUCLOTOR_TOGGLE:
       return {
@@ -24,7 +26,8 @@ export default function navBarReducer(state = initialState, action) {
         isOpenTwcas: state.isOpenTwcas,
         isOpenCalculator: !state.isOpenCalculator,
         isOpenBody: state.isOpenBody,
-        isOpenGotanda: state.isOpenGotanda
+        isOpenGotanda: state.isOpenGotanda,
+        isOpenGotandaDetail: state.isOpenGotandaDetail
       };
     case types.BODY_TOGGLE:
       return {
@@ -32,7 +35,8 @@ export default function navBarReducer(state = initialState, action) {
         isOpenTwcas: state.isOpenTwcas,
         isOpenCalculator: state.isOpenCalculator,
         isOpenBody: !state.isOpenBody,
-        isOpenGotanda: state.isOpenGotanda
+        isOpenGotanda: state.isOpenGotanda,
+        isOpenGotandaDetail: state.isOpenGotandaDetail
       };
     case types.TWCAS_TOGGLE:
       return {
@@ -40,7 +44,8 @@ export default function navBarReducer(state = initialState, action) {
         isOpenTwcas: !state.isOpenTwcas,
         isOpenCalculator: state.isOpenCalculator,
         isOpenBody: state.isOpenBody,
-        isOpenGotanda: state.isOpenGotanda
+        isOpenGotanda: state.isOpenGotanda,
+        isOpenGotandaDetail: state.isOpenGotandaDetail
       }
     case types.GOTANDA_TOGGLE:
       return {
@@ -48,7 +53,17 @@ export default function navBarReducer(state = initialState, action) {
         isOpenTwcas: state.isOpenTwcas,
         isOpenCalculator: state.isOpenCalculator,
         isOpenBody: state.isOpenBody,
-        isOpenGotanda: !state.isOpenGotanda
+        isOpenGotanda: !state.isOpenGotanda,
+        isOpenGotandaDetail: state.isOpenGotandaDetail
+      }
+    case types.GOTANDA_DETAIL_TOGGLE:
+      return {
+        isOpenInputText: state.isOpenInputText,
+        isOpenTwcas: state.isOpenTwcas,
+        isOpenCalculator: state.isOpenCalculator,
+        isOpenBody: state.isOpenBody,
+        isOpenGotanda: state.isOpenGotanda,
+        isOpenGotandaDetail: !state.isOpenGotandaDetail
       }
     default:
     return state;

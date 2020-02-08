@@ -4,6 +4,8 @@ import GotandaSearch from './GotandaSearch';
 import GotandaRegist from './GotandaRegist';
 import image from '../image/IMG_20180430_025849.jpg';
 import Grid from '@material-ui/core/Grid';
+import TextsmsIcon from '@material-ui/icons/Textsms';
+import EditIcon from '@material-ui/icons/Edit';
 
 class Gotanda extends React.Component {
   constructor() {
@@ -30,18 +32,19 @@ class Gotanda extends React.Component {
                 <img style={{ width: '100%', height: '130px', marginBottom: '10px'}} src={image} alt='五反田' />
                 <Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={e => this.handleSelect(e)}>
                     <NavItem eventKey="1"　title="五反田の情報を検索">
-                    検索
+                    <TextsmsIcon style={{ marginBottom: '-2px'}} />一覧
                     </NavItem>
                     <NavItem eventKey="2" title="五反田の情報を登録">
-                    登録
+                    <EditIcon style={{ marginBottom: '-2px'}} />登録
                     </NavItem>
                 </Nav>
                 <GotandaSearch 
                   activeKey={this.state.activeKey}
                   inputSearchResultAction={this.props.actions.inputSearchResultAction}
                   gotandaList={this.props.gotandaSearchReducer.gotandaList}
-                  dialogOpen={this.props.modalReducer.dialogOpen}
-                  dialogAction={this.props.actions.dialogAction}
+                  inputDetailInfoAction={this.props.actions.inputDetailInfoAction}
+                  gotandaToggleAction={this.props.actions.gotandaToggleAction}
+                  gotandaDetailToggleAction={this.props.actions.gotandaDetailToggleAction}
                 />
                 <GotandaRegist
                   activeKey={this.state.activeKey} 
@@ -55,6 +58,9 @@ class Gotanda extends React.Component {
                   inputDateAction={this.props.actions.inputDateAction}
                   comment={this.props.gotandaRegistReducer.comment}
                   inputCommentAction={this.props.actions.inputCommentAction}
+                  password={this.props.gotandaRegistReducer.password}
+                  inputPasswordAction={this.props.actions.inputPasswordAction}
+                  deleteGotandaRegistAction={this.props.actions.deleteGotandaRegistAction}
                 />
               </Panel.Body>
             </Panel>

@@ -50,7 +50,13 @@ class NavBar extends React.Component {
     let body = this.props.navBarReducer.isOpenBody ? <Body {...this.props} /> : '';
     let gotanda = this.props.navBarReducer.isOpenGotanda ? <Gotanda {...this.props} /> : '';
     let gotandaDetail = this.props.navBarReducer.isOpenGotandaDetail ? 
-      <GotandaDetail handleName={this.props.gotandaRegistReducer.handleName} /> : '';
+      <GotandaDetail 
+        handleName={this.props.gotandaRegistReducer.handleName}
+        shopName={this.props.gotandaRegistReducer.shopName}
+        date={this.props.gotandaRegistReducer.date}
+        radioList={this.props.gotandaRegistReducer.radioList}
+        comment={this.props.gotandaRegistReducer.comment}
+      /> : '';
 
     return (
       <div>
@@ -109,9 +115,9 @@ class NavBar extends React.Component {
             </AppBar>
 
             <div style={{marginTop: 65}}>
+              {gotandaDetail}
               {gotanda}
               {inputText}
-              {gotandaDetail}
             </div>
           </Grid>
         </Grid>

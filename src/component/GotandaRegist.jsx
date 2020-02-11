@@ -8,7 +8,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import api from '../api';
-import { EditorFormatColorReset } from 'material-ui/svg-icons';
 
 class GotandaRegist extends React.Component {
     constructor() {

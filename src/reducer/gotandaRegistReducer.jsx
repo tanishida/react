@@ -94,7 +94,7 @@ export default function gotandaRegistReducer(state = initialState, action) {
             handleName: action.handleName,
             shopName: action.shopName,
             date: action.date,
-            radioList: makeRadioList(action.activeRadio),
+            radioList: action.radioList,
             comment: action.comment,
             password: state.password
         }

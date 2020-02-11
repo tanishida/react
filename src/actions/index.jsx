@@ -163,13 +163,13 @@ function deleteGotandaRegistAction() {
   };
 }
 
-function inputDetailInfoAction(handleName, shopName, date, activeRadio, comment) {
+function inputDetailInfoAction(handleName, shopName, date, radioList, comment) {
   return {
     type: types.INPUT_DETAIL_INFO,
     handleName,
     shopName,
     date,
-    activeRadio,
+    radioList,
     comment
   };
 }

@@ -17,7 +17,7 @@ class GotandaSearch extends React.Component {
         items.forEach(item => {
           this.props.inputSearchResultAction(item.handleName, item.shopName, item.date, item.radio, item.comment, item.id);
         });
-      });  
+      });
     }, 50000);
   }
   componentWillUnmount(){

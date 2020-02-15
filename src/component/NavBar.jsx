@@ -43,6 +43,12 @@ class NavBar extends React.Component {
       open: !this.state.open
     })
   }
+  detailCloseAction() {
+    this.props.actions.deleteGotandaRegistAction();
+    if (this.props.navBarReducer.isOpenGotandaDetail) {
+      this.props.actions.gotandaDetailToggleAction();
+    }
+  }
 
   render() {
     let inputText = this.props.navBarReducer.isOpenInputText ? <InputText {...this.props} /> : '';
@@ -56,6 +62,10 @@ class NavBar extends React.Component {
         date={this.props.gotandaRegistReducer.date}
         radioList={this.props.gotandaRegistReducer.radioList}
         comment={this.props.gotandaRegistReducer.comment}
+        gotandaToggleAction={this.props.actions.gotandaToggleAction}
+        deleteGotandaRegistAction={this.props.actions.deleteGotandaRegistAction}
+        gotandaDetailToggleAction={this.props.actions.gotandaDetailToggleAction}
+
       /> : '';
 
     return (
@@ -63,7 +73,6 @@ class NavBar extends React.Component {
         <Grid container justify="center">
           <Grid item xs={12}>
             <Drawer
-              docked={false}
               open={this.state.open}
               anchor="left"
               onClose={() => this.handleToggle()}>
@@ -78,7 +87,7 @@ class NavBar extends React.Component {
               </IconButton>
               <Divider />
               <ListItem 
-                onClick={() => this.props.actions.gotandaToggleAction()} 
+                onClick={() => (this.props.actions.gotandaToggleAction(), this.detailCloseAction())} 
                 disabled={this.props.navBarReducer.isOpenGotanda}>
                   <ListItemIcon><SearchIcon style={this.state.iconSize} /></ListItemIcon>
                   <div style={{fontSize: '15px'}}>
@@ -86,7 +95,7 @@ class NavBar extends React.Component {
                   </div>
               </ListItem>
               <ListItem 
-                onClick={() => this.props.actions.inputTextToggleAction()} 
+                onClick={() => (this.props.actions.inputTextToggleAction(), this.detailCloseAction())} 
                 disabled={this.props.navBarReducer.isOpenInputText}>
                   <ListItemIcon><RateReviewIcon style={this.state.iconSize} /></ListItemIcon>
                   <div style={{fontSize: '15px'}}>
@@ -94,7 +103,7 @@ class NavBar extends React.Component {
                   </div>
               </ListItem>
               <ListItem 
-                onClick={() => this.props.actions.calculatorToggleAction()} 
+                onClick={() => (this.props.actions.calculatorToggleAction(), this.detailCloseAction())} 
                 disabled={this.props.navBarReducer.isOpenCalculator}>
                   <ListItemIcon><ContactsIcon style={this.state.iconSize} /></ListItemIcon>
                   <div style={{fontSize: '15px'}}>
@@ -108,7 +117,6 @@ class NavBar extends React.Component {
                   <MenuIcon style={{fontSize: 'x-large'}} />
                 </IconButton>
                 <Typography style={{fontSize: 'x-large', fontWeight: 'bolder'}} variant="h6">
-                  五反田ライク
                   <ThumbUpAltIcon style={{fontSize: 'x-large', marginBottom: '-2px'}} />
                 </Typography>
               </Toolbar>

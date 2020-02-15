@@ -44,6 +44,7 @@ class Gotanda extends React.Component {
                   gotandaList={this.props.gotandaSearchReducer.gotandaList}
                   inputDetailInfoAction={this.props.actions.inputDetailInfoAction}
                   gotandaToggleAction={this.props.actions.gotandaToggleAction}
+                  deleteGotandaRegistAction={this.props.actions.deleteGotandaRegistAction}
                   gotandaDetailToggleAction={this.props.actions.gotandaDetailToggleAction}
                 />
                 <GotandaRegist
@@ -60,6 +61,7 @@ class Gotanda extends React.Component {
                   inputCommentAction={this.props.actions.inputCommentAction}
                   password={this.props.gotandaRegistReducer.password}
                   inputPasswordAction={this.props.actions.inputPasswordAction}
+                  inputSearchResultAction={this.props.actions.inputSearchResultAction}
                   deleteGotandaRegistAction={this.props.actions.deleteGotandaRegistAction}
                 />
               </Panel.Body>

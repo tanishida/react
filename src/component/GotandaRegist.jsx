@@ -42,6 +42,11 @@ class GotandaRegist extends React.Component {
       }
       if (formComment !== '' && formComment !== undefined) {
         api.postGotandaRegistAction(formHandleName, formShopName, formDate, formRadio, formComment, formPassword);
+        api.fetchGotandaRegistAction().then(items => {
+          items.forEach(item => {
+            this.props.inputSearchResultAction(item.handleName, item.shopName, item.date, item.radio, item.comment, item.id);
+          });
+        });
         this.setState({snackberOpen: true});
         this.props.deleteGotandaRegistAction();
       }

@@ -33,7 +33,6 @@ class GotandaSearch extends React.Component {
       const list = this.props.gotandaList !== undefined ? this.props.gotandaList: [];
       return (
           <div className={this.props.activeKey !== '1' ? 'hidden' : ''}>
-            <Root />
             <Grid container justify="center">
                 {
                   list.map((item, index) => {

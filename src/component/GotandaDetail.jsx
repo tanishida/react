@@ -7,7 +7,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Grid from '@material-ui/core/Grid';
+import StarIcon from "@material-ui/icons/Star";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import Checkbox from '@material-ui/core/Checkbox';
 import {Panel, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+
 
 
 class GotandaDetail extends React.Component {
@@ -17,82 +21,55 @@ class GotandaDetail extends React.Component {
         this.props.gotandaToggleAction();
     }
     render() {
-        const radio = this.props.radioList;
+        const radio = this.props.radioList.map(item => {
+            if (item.checked) {
+                return item.index;
+            }
+        }).filter(a => a);
         return( 
             <Grid container justify="center">
                 <Grid item xs={1}></Grid>
-                        <Grid item xs={10}>詳細表示</Grid>
-                        <Grid item xs={1}></Grid>
-                        <Grid item xs={1}></Grid>
-                        <Grid item xs={10}>
-                        <Panel><Panel.Body>
-                            <Grid container justify="center">
-                                <Grid item xs={12}>
-                                    <TextField
-                                        label="input"
-                                        value={this.props.handleName}
-                                        hintText="入力"
-                                        floatingLabelText="ハンドルネームを入力"
-                                        disabled
-                                    />
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <TextField
-                                    label="input"
-                                    value={this.props.shopName}
-                                    hintText="入力"
-                                    floatingLabelText="お店の名前を入力"
-                                    disabled
-                                    />
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <DatePicker 
-                                    hintText="日付を入力"
-                                    container="dialog"
-                                    style={{marginTop: '24px'}}
-                                    value={this.props.date}
-                                    disabled
-                                    mode="landscape" />
-                                </Grid>
-                                <Grid item xs={4}>
-                                <FormControl component="fieldset" style={{marginLeft: '35px'}}>
-                                    <FormLabel component="legend" style={{fontSize: '20px'}}>評価（おすすめ度）</FormLabel>
-                                    <RadioGroup aria-label="position" name="position" style={{width: 'max-content'}} row>
-                                        {
-                                        radio.map(item => {
-                                            return (
-                                            <FormControlLabel
-                                                value={item.index}
-                                                style={{marginLeft: item.index !== '1' ? '-20px' : ''}}
-                                                control={<Radio color="primary" />}
-                                                label={item.value}
-                                                labelPlacement="top"
-                                                checked={item.checked}
-                                                disabled
-                                            />
-                                            );
-                                        })
-                                        }
-                                    </RadioGroup>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                    id="outlined-multiline-static"
-                                    label="Multiline"
-                                    value={this.props.comment}
-                                    multiLine
-                                    fullWidth
-                                    hintText="入力"
-                                    floatingLabelText="口コミ、評価、コメント"
-                                    rows="4"
-                                    disabled
-                                    />
-                                </Grid>
-                            </Grid>
-                            <RaisedButton label={'閉じる'}  onClick={() => this.closeAction()}/>
-                            </Panel.Body></Panel>
+                <Grid item xs={10}>
+                <Panel><Panel.Body>
+                    <Grid item xs={12}>
+                        <div style={{marginTop: '3px', marginBottom: '-20px'}}>
+                            <div style={{fontSize: 'x-large', marginBottom: '20px'}}>
+                                {this.props.shopName}<br />
+                            </div>
+                            「{this.props.handleName}」さんからの評価
+                        </div><br />
+                        {
+                            this.props.radioList.map(item => {
+                                if (item.index <= radio) {
+                                    return (
+                                        <StarIcon htmlColor={"gold"} fontSize={"large"} />
+                                    );
+                                }
+                                return (
+                                    <StarBorderIcon fontSize={"large"} />
+                                );
+                            })
+                        }
+                    </Grid>
+                    <Grid container>
+                        <div style={{marginTop: '15px', marginBottom: '-15px'}}>
+                            コメント
+                        </div><br />
+                        <Grid item xs={12}>
+                            <TextField
+                            id="outlined-multiline-static"
+                            label="Multiline"
+                            value={this.props.comment}
+                            multiLine
+                            fullWidth
+                            rows="4"
+                            disabled
+                            />
                         </Grid>
+                    </Grid>
+                    <RaisedButton label={'閉じる'}  onClick={() => this.closeAction()}/>
+                </Panel.Body></Panel>
+                </Grid>
                 <Grid item xs={1}></Grid>
             </Grid>
         );

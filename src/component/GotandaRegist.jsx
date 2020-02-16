@@ -28,7 +28,7 @@ class GotandaRegist extends React.Component {
       this.props.inputDateAction(date)
     }
     onChangePassword(e) {
-      this.props.inputPasswordAction(e.target.value)
+      // password機能は後日実装
     }
     onAddText() {
       const formHandleName = this.props.handleName;
@@ -36,7 +36,8 @@ class GotandaRegist extends React.Component {
       const formDate = this.props.date;
       const formRadio = this.state.activeRadio;
       const formComment = this.props.comment;
-      const formPassword = this.props.password;
+      // password機能は後日実装
+      const formPassword = 'test';
       if (formHandleName === '' || formShopName === '' || formRadio === '' || formComment === '' || formPassword === '') {
         return;
       }
@@ -64,6 +65,20 @@ class GotandaRegist extends React.Component {
           <div className={this.props.activeKey !== '2' ? 'hidden' : ''} style={{marginTop: '10px'}}>
             <Grid container justify="center">
               <Snackbar message={'登録しました。'} open={this.state.snackberOpen} />
+              <Grid container justify="left">
+                <div style={{marginBottom: '-10px'}}>
+                  登録日
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <DatePicker 
+                  hintText="日付を入力"
+                  container="dialog"
+                  value={this.props.date}
+                  onChange={(e, date) => this.onChangeDate(date)}
+                  disabled
+                  mode="landscape" />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                     label="input"
@@ -73,7 +88,7 @@ class GotandaRegist extends React.Component {
                     floatingLabelText="ハンドルネームを入力"
                   />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={6}>
                 <TextField
                   label="input"
                   value={this.props.shopName}
@@ -82,16 +97,7 @@ class GotandaRegist extends React.Component {
                   floatingLabelText="お店の名前を入力"
                 />
               </Grid>
-              <Grid item xs={4}>
-                <DatePicker 
-                  hintText="日付を入力"
-                  container="dialog"
-                  style={{marginTop: '24px'}}
-                  value={this.props.date}
-                  onChange={(e, date) => this.onChangeDate(date)}
-                  mode="landscape" />
-              </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={6}>
               <FormControl component="fieldset" style={{marginLeft: '35px'}}>
                 <FormLabel component="legend" style={{fontSize: '20px'}}>評価（おすすめ度）</FormLabel>
                   <RadioGroup aria-label="position" name="position" style={{width: 'max-content'}} row>
@@ -127,13 +133,15 @@ class GotandaRegist extends React.Component {
                 />
               </Grid>
               <Grid item xs={12}>
-              <TextField
-                  hintText="パスワードを入力"
-                  floatingLabelText="パスワード（編集、削除時に使用）"
-                  value={this.props.password}
-                  onChange={e => this.onChangePassword(e)}
-                  type="password"
-              />
+              <div className={"hidden"}>
+                <TextField
+                    hintText="パスワードを入力"
+                    floatingLabelText="パスワード（編集、削除時に使用）"
+                    value={this.props.password}
+                    onChange={e => this.onChangePassword(e)}
+                    type="password"
+                />
+              </div>
               </Grid>
               <Grid item xs={12}>
                 <RaisedButton secondary={true} label={'登録'} onClick={() => this.onAddText()} />

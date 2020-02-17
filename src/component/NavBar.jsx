@@ -117,6 +117,7 @@ class NavBar extends React.Component {
                   <MenuIcon style={{fontSize: 'x-large'}} />
                 </IconButton>
                 <Typography style={{fontSize: 'x-large', fontWeight: 'bolder'}} variant="h6">
+                  五反田ライク
                   <ThumbUpAltIcon style={{fontSize: 'x-large', marginBottom: '-2px'}} />
                 </Typography>
               </Toolbar>

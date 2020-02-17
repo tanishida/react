@@ -1,7 +1,7 @@
 import config from '../config';
 
 const fetchMessegeAction = async () => {
-    const response = await fetch(config.GET_LOCAL, {
+    const response = await fetch(config.GET_AWS, {
       mode: 'cors',
       method: 'GET'
     }).catch(err => console.log(`'${err}'【GET】message`));
@@ -12,7 +12,7 @@ const postMessegeAction = async (text, name) => {
     const body = new FormData();
     body.append('name', name);
     body.append('value', text);
-    await fetch(config.POST_LOCAL, {
+    await fetch(config.POST_AWS, {
       mode: 'cors',
       method: 'POST',
       body
@@ -20,7 +20,7 @@ const postMessegeAction = async (text, name) => {
 }
 
 const fetchGotandaRegistAction = async () => {
-  const response = await fetch(config.GET_GOTANDA_REGIST_LOCAL, {
+  const response = await fetch(config.GET_GOTANDA_REGIST_AWS, {
     mode: 'cors',
     method: 'GET'
   }).catch(err => console.log(`'${err}'【GET】gotanda regist`));
@@ -35,7 +35,7 @@ const postGotandaRegistAction = async (handleName, shopName, date, radio, commen
   body.append('radio', radio);
   body.append('comment', comment);
   body.append('password', password);
-  await fetch(config.POST_GOTANDA_REGIST_LOCAL, {
+  await fetch(config.POST_GOTANDA_REGIST_AWS, {
     mode: 'cors',
     method: 'POST',
     body

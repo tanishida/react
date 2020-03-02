@@ -2,4 +2,4 @@
 
 #npm start
 
-#https://tanishida.github.io/gotanda-like/
+# https://tanishida.github.io/gotanda-like/

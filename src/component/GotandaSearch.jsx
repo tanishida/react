@@ -33,11 +33,11 @@ class GotandaSearch extends React.Component {
       const list = this.props.gotandaList !== undefined ? this.props.gotandaList: [];
       return (
           <div className={this.props.activeKey !== '1' ? 'hidden' : ''}>
-            <Grid container justify="center">
+            <Grid container justify="left">
                 {
                   list.map((item, index) => {
                     return  (
-                      <Grid item xs={4}>
+                      <Grid item xs={12}>
                         <Card style={{marginTop: '10px', marginLeft: '10px', backgroundColor: 'whitesmoke'}}>
                           <div style={{marginTop: '3px', marginLeft: '10px', marginBottom: '-20px'}}>
                             「{item.handleName}」さんからの情報

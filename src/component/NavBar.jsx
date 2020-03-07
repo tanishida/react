@@ -20,6 +20,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import GotandaDetail from './GotandaDetail';
+import HelpIcon from '@material-ui/icons/Help';
+import Popover from '@material-ui/core/Popover';
+
 
 class NavBar extends React.Component {
   constructor() {
@@ -120,6 +123,12 @@ class NavBar extends React.Component {
                   五反田ライク
                   <ThumbUpAltIcon style={{fontSize: 'x-large', marginBottom: '-2px'}} />
                 </Typography>
+                <div style={{marginLeft: 'auto'}}>
+                  <Typography
+                  >
+                    <HelpIcon />
+                  </Typography>
+                </div>
               </Toolbar>
             </AppBar>
 

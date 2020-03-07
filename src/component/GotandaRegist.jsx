@@ -88,7 +88,7 @@ class GotandaRegist extends React.Component {
                     floatingLabelText="ハンドルネームを入力"
                   />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <TextField
                   label="input"
                   value={this.props.shopName}
@@ -97,8 +97,8 @@ class GotandaRegist extends React.Component {
                   floatingLabelText="お店の名前を入力"
                 />
               </Grid>
-              <Grid item xs={6}>
-              <FormControl component="fieldset" style={{marginLeft: '35px'}}>
+              <Grid item xs={12}>
+              <FormControl component="fieldset" style={{marginTop: '30px'}}>
                 <FormLabel component="legend" style={{fontSize: '20px'}}>評価（おすすめ度）</FormLabel>
                   <RadioGroup aria-label="position" name="position" style={{width: 'max-content'}} row>
                     {

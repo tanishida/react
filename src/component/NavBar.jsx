@@ -23,7 +23,6 @@ import GotandaDetail from './GotandaDetail';
 import HelpIcon from '@material-ui/icons/Help';
 import Popover from '@material-ui/core/Popover';
 
-
 class NavBar extends React.Component {
   constructor() {
     super()
@@ -38,7 +37,8 @@ class NavBar extends React.Component {
       iconSize: {
         fontSize: '25px'
       },
-      showDetail: false
+      showDetail: false,
+      showPop: false
     }
   }
   handleToggle() {
@@ -52,6 +52,18 @@ class NavBar extends React.Component {
       this.props.actions.gotandaDetailToggleAction();
     }
   }
+  handleClick () {
+    this.setState({
+      showPop: !this.state.showPop
+    });
+  };
+  
+  handleClose () {
+    this.setState({
+      showPop: !this.state.showPop
+    });
+  };
+  
 
   render() {
     let inputText = this.props.navBarReducer.isOpenInputText ? <InputText {...this.props} /> : '';
@@ -70,6 +82,7 @@ class NavBar extends React.Component {
         gotandaDetailToggleAction={this.props.actions.gotandaDetailToggleAction}
 
       /> : '';
+      const id = this.state.showPop ? 'simple-popover' : undefined;
 
     return (
       <div>
@@ -124,10 +137,39 @@ class NavBar extends React.Component {
                   <ThumbUpAltIcon style={{fontSize: 'x-large', marginBottom: '-2px'}} />
                 </Typography>
                 <div style={{marginLeft: 'auto'}}>
-                  <Typography
+                  <IconButton aria-describedby={id} onClick={() => this.handleClick()}>
+                    <HelpIcon style={{color: 'aliceblue'}} fontSize="large" />
+                  </IconButton>
+                  <Popover
+                    id={id}
+                    open={this.state.showPop}
+                    onClose={() => this.handleClick()}
+                    anchorReference="anchorPosition"
+                    anchorPosition={{ top: 80, left: 200 }}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'center',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'center',
+                    }}
                   >
-                    <HelpIcon />
-                  </Typography>
+                    <Typography style={{marginTop: 5, marginBottom: 5, marginRight: 5, marginLeft: 5}}>
+                      「五反田ライク<ThumbUpAltIcon style={{marginBottom: '-3px'}} />」とは、<br />
+                      五反田好き（like）な皆様が主体となり、<br />
+                      <br />
+                      <div style={{fontWeight: 'bold'}}>
+                        五反田の飲食店などのお店情報を<br />
+                        誰でも自由に投稿、閲覧するアプリケーションです。<br />
+                        お気軽にご利用ください。<br />
+                      </div>
+                      <br />
+                      <div style={{fontSize: 'large', color: 'red'}}>
+                      ※誹謗中傷はご遠慮下さい。
+                      </div>
+                    </Typography>
+                  </Popover>
                 </div>
               </Toolbar>
             </AppBar>
